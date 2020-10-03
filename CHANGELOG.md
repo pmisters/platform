@@ -4,6 +4,48 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 9.0.3 - 2020-10-02
+
+### Fixed
+- Registration of services
+
+## 9.0.2 - 2020-10-02
+
+### Fixed
+- Use route arguments when generating an active link
+- Wait for a call to the breadcrumbs service before your ad.
+
+## 9.0.1 - 2020-10-01
+
+### Changed
+- Redirects when the login form is disabled [#1264](https://github.com/orchidsoftware/platform/pull/1264)
+
+## 9.0.0 - 2020-09-30
+
+### Changed
+- Set  default prefix to `admin` [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- Betterment UI [#1227](https://github.com/orchidsoftware/platform/issues/1227)
+- Using the breadcrumbs component
+
+### Fixed
+- Show activity of nested menu items [#1249](https://github.com/orchidsoftware/platform/issues/1249)
+
+### Removed
+- Dependency on `laravel/ui` [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- Dependency on `ralouphie/mimey`
+- Password recovery option [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- Last login column [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- Two-factor authentication [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- UI presets [#1230](https://github.com/orchidsoftware/platform/issues/1230)
+- Rubbers layout
+
+
+
+## 8.5.1 - 2020-09-30
+
+### Fixed
+- Compare operator for hasAttribute [#1258](https://github.com/orchidsoftware/platform/pull/1258)
+
 ## 8.5.0 - 2020-09-29
 
 ### Added

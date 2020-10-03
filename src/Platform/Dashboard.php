@@ -8,17 +8,16 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Orchid\Access\TwoFactor;
 use Orchid\Screen\Screen;
 
 class Dashboard
 {
-    use Macroable, TwoFactor;
+    use Macroable;
 
     /**
      * ORCHID Version.
      */
-    public const VERSION = '8.5.0';
+    public const VERSION = '9.0.3';
 
     /**
      * The Dashboard configuration options.
