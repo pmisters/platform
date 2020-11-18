@@ -6,11 +6,12 @@ namespace Orchid\Tests\Unit\Screen\Fields;
 
 use Orchid\Screen\Fields\Input;
 use Orchid\Tests\Unit\Screen\TestFieldsUnitCase;
+use Throwable;
 
 class InputTest extends TestFieldsUnitCase
 {
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function testShowHr(): void
     {
@@ -67,5 +68,36 @@ class InputTest extends TestFieldsUnitCase
         $this->assertStringContainsString('data-name="Alexandr Chernyaev"', $input);
         $this->assertStringContainsString('data-location="Russia"', $input);
         $this->assertStringContainsString('data-hello="world!"', $input);
+    }
+
+    public function testEscapeAttributes(): void
+    {
+        $input = (string) Input::make('name')->value('valueQuote"');
+
+        $this->assertStringContainsString('value="valueQuote&quot;"', $input);
+    }
+
+    public function testRemoveBooleanAttributes(): void
+    {
+        $input = (string) Input::make('name')->required(false);
+
+        $this->assertStringNotContainsString('required', $input);
+    }
+
+    public function testDataListAttribute(): void
+    {
+        $input = (string) Input::make('browser')->datalist([
+            'Opera', 'Edge', 'Firefox',
+            'Chrome', 'Safari',
+        ]);
+
+        $this->assertStringContainsString('Safari', $input);
+        $this->assertStringContainsString('list="datalist-browser"', $input);
+        $this->assertStringContainsString('<datalist id="datalist-browser"', $input);
+
+        $input = (string) Input::make('browser')->datalist([]);
+
+        $this->assertStringNotContainsString('list="datalist-browser"', $input);
+        $this->assertStringNotContainsString('<datalist id="datalist-browser"', $input);
     }
 }

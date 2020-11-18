@@ -1,4 +1,6 @@
-<p align="center"> <a href="https://orchid.software/"><img src="https://orchid.software/assets/img/logo-laravel-style.svg" alt="Laravel Orchid" height="48"></a></p>
+<p align="center"> 
+ <a href="https://orchid.software/"><img src="https://orchid.software/assets/img/logo-laravel-style.svg" alt="Laravel Orchid" height="48"></a>
+</p>
 
 
 <h4 align="center">For the full documentation, visit <a href="http://orchid.software">orchid.software</a>.</h4>
@@ -12,11 +14,10 @@
 
 ## Introduction
 
-It is a package for creating administration-style applications for the [Laravel](https://laravel.com).
-It allows you to abstract the typical patterns of business applications so that developers can quickly implement beautiful and elegant interfaces without much effort. The main places of application are back-office applications, admin panels, content management systems, etc.
+A free [Laravel](https://laravel.com) package that abstracts standard business logic and allows code-driven rapid application development of back office applications like admin panels and dashboards.
 
 <a href="https://raw.githubusercontent.com/orchidsoftware/platform/master/.github/IMAGES/promo-full.png">
-<img src="https://raw.githubusercontent.com/orchidsoftware/platform/master/.github/IMAGES/promo-slim.png" alt="Laravel Orchid Platform" align="right" />
+  <img src="https://raw.githubusercontent.com/orchidsoftware/platform/master/.github/IMAGES/promo-full.png" alt="Laravel Orchid Platform" align="center" />
 </a>
 
 
@@ -38,11 +39,12 @@ It allows you to abstract the typical patterns of business applications so that 
 * [Global Community](https://t.me/orchid_community)
 * [Russia Community](https://t.me/orchid_russian_community)
 
+
 ## Donate & Support
 
-Since a healthy open source ecosystem creates real value for the software industry, 
-I believe it is fair for the developers [to reward their work with real money](https://www.paypal.me/tabuna/10usd). &#x1F60A;
+<a href="https://opencollective.com/orchid#backers" target="_blank"><img src="https://opencollective.com/orchid/backers.svg?width=380&avatarHeight=36"></a>
 
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/orchid#backer)]
 
 ## License
 

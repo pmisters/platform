@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Orchid\Platform\Providers;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
@@ -22,6 +23,7 @@ use Orchid\Platform\Commands\ScreenCommand;
 use Orchid\Platform\Commands\SelectionCommand;
 use Orchid\Platform\Commands\TableCommand;
 use Orchid\Platform\Dashboard;
+use Orchid\Screen\Components\Popover;
 use Tabuna\Breadcrumbs\BreadcrumbsServiceProvider;
 use Watson\Active\ActiveServiceProvider;
 
@@ -155,12 +157,16 @@ class FoundationServiceProvider extends ServiceProvider
 
     /**
      * Register provider.
+     *
+     * @return $this
      */
-    public function registerProviders(): void
+    public function registerProviders(): self
     {
         foreach ($this->provides() as $provide) {
             $this->app->register($provide);
         }
+
+        return $this;
     }
 
     /**
@@ -186,9 +192,10 @@ class FoundationServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->registerProviders();
-
-        $this->commands($this->commands);
+        $this
+            ->registerTranslations()
+            ->registerProviders()
+            ->commands($this->commands);
 
         $this->app->singleton(Dashboard::class, static function () {
             return new Dashboard();
@@ -212,5 +219,7 @@ class FoundationServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             Dashboard::path('config/platform.php'), 'platform'
         );
+
+        Blade::component('orchid-popover', Popover::class);
     }
 }

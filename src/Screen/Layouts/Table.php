@@ -64,6 +64,7 @@ abstract class Table extends Layout
             'textNotFound' => $this->textNotFound(),
             'subNotFound'  => $this->subNotFound(),
             'striped'      => $this->striped(),
+            'bordered'     => $this->bordered(),
             'slug'         => $this->getSlug(),
         ]);
     }
@@ -93,9 +94,21 @@ abstract class Table extends Layout
     }
 
     /**
+     * Usage for zebra-striping to any table row.
+     *
      * @return bool
      */
     protected function striped(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Usage for borders on all sides of the table and cells.
+     *
+     * @return bool
+     */
+    protected function bordered(): bool
     {
         return false;
     }

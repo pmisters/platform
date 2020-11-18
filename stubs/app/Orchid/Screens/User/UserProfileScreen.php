@@ -7,6 +7,7 @@ namespace App\Orchid\Screens\User;
 use App\Orchid\Layouts\User\UserEditLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
@@ -85,28 +86,26 @@ class UserProfileScreen extends Screen
         return [
             UserEditLayout::class,
 
-            Layout::modal('password', [
-                Layout::rows([
-                    Password::make('old_password')
-                        ->placeholder(__('Enter the current password'))
-                        ->required()
-                        ->title(__('Old password'))
-                        ->help('This is your password set at the moment.'),
+            Layout::modal('password', Layout::rows([
+                Password::make('old_password')
+                    ->placeholder(__('Enter the current password'))
+                    ->required()
+                    ->title(__('Old password'))
+                    ->help('This is your password set at the moment.'),
 
-                    Password::make('password')
-                        ->placeholder(__('Enter the password to be set'))
-                        ->required()
-                        ->title(__('New password')),
+                Password::make('password')
+                    ->placeholder(__('Enter the password to be set'))
+                    ->required()
+                    ->title(__('New password')),
 
-                    Password::make('password_confirmation')
-                        ->placeholder(__('Enter the password to be set'))
-                        ->required()
-                        ->title(__('Confirm new password'))
-                        ->help('A good password is at least 15 characters or at least 8 characters long, including a number and a lowercase letter.'),
-                ]),
-            ])
+                Password::make('password_confirmation')
+                    ->placeholder(__('Enter the password to be set'))
+                    ->required()
+                    ->title(__('Confirm new password'))
+                    ->help('A good password is at least 15 characters or at least 8 characters long, including a number and a lowercase letter.'),
+            ]))
                 ->title(__('Change Password'))
-                ->applyButton('Update password'),
+                ->applyButton(__('Update password')),
         ];
     }
 
@@ -117,7 +116,10 @@ class UserProfileScreen extends Screen
     {
         $request->validate([
             'user.name'  => 'required|string',
-            'user.email' => 'required|unique:users,email,'.$request->user()->id,
+            'role.email' => [
+                'required',
+                Rule::unique(User::class, 'email')->ignore($request->user()),
+            ],
         ]);
 
         $request->user()

@@ -1,7 +1,7 @@
 @extends('platform::dashboard')
 
 @section('title', '404')
-@section('description', __("You request a page that doesn't exist."))
+@section('description', __("You requested a page that doesn't exist."))
 
 @section('content')
 
@@ -10,8 +10,8 @@
             <x-orchid-icon path="bug"/>
             404
         </div>
-        <h1 class="h2 mb-3">{{ __("You request a page that doesn't exist.") }}</h1>
-        <p class="h4 text-muted font-weight-normal mb-7">{{ __("It's possible you entered the wrong address or the link doesn't work.") }}</p>
+        <h1 class="h2 mb-3">{{ __("You requested a page that doesn't exist.") }}</h1>
+        <p class="h4 text-muted font-weight-normal mb-7">{{ __("You may have' entered an address that doesn't exist or that the link you have requested doesn't work (anymore).") }}</p>
     </div>
 
 @endsection

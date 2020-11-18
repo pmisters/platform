@@ -29,6 +29,16 @@ class Action extends Field implements Actionable
     ];
 
     /**
+     * A set of attributes for the assignment
+     * of which will automatically translate them.
+     *
+     * @var array
+     */
+    protected $translations = [
+        'name',
+    ];
+
+    /**
      * @param string|null $name
      *
      * @return self
@@ -39,6 +49,8 @@ class Action extends Field implements Actionable
     }
 
     /**
+     * @deprecated
+     *
      * Align button to the right.
      *
      * @return static
@@ -73,6 +85,8 @@ class Action extends Field implements Actionable
     }
 
     /**
+     * @deprecated
+     *
      * Set the button as block.
      *
      * @return static

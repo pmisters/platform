@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Orchid\Screen;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\Macroable;
 use Orchid\Screen\Layouts\Accordion;
 use Orchid\Screen\Layouts\Blank;
@@ -12,6 +13,7 @@ use Orchid\Screen\Layouts\Columns;
 use Orchid\Screen\Layouts\Component;
 use Orchid\Screen\Layouts\Modal;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Screen\Layouts\Selection;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\Layouts\Tabs;
 use Orchid\Screen\Layouts\View;
@@ -132,13 +134,15 @@ class LayoutFactory
     }
 
     /**
-     * @param string $key
-     * @param array  $layouts
+     * @param string          $key
+     * @param string|string[] $layouts
      *
      * @return Modal
      */
-    public static function modal(string $key, array $layouts): Modal
+    public static function modal(string $key, $layouts): Modal
     {
+        $layouts = Arr::wrap($layouts);
+
         return new class($key, $layouts) extends Modal {
         };
     }
@@ -192,6 +196,39 @@ class LayoutFactory
     public static function accordion(array $layouts): Accordion
     {
         return new class($layouts) extends Accordion {
+        };
+    }
+
+    /**
+     * @param string[] $filters
+     *
+     * @return Selection
+     */
+    public static function selection(array $filters): Selection
+    {
+        return new class($filters) extends Selection {
+            /**
+             * @var string[]
+             */
+            protected $filters;
+
+            /**
+             * Constructor.
+             *
+             * @param string[] $filters
+             */
+            public function __construct(array $filters = [])
+            {
+                $this->filters = $filters;
+            }
+
+            /**
+             * @return string[]
+             */
+            public function filters(): array
+            {
+                return $this->filters;
+            }
         };
     }
 }

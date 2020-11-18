@@ -51,16 +51,19 @@ class Modal extends Layout
     public function __construct(string $key, array $layouts = [])
     {
         $this->variables = [
-            'apply'                 => __('Apply'),
-            'close'                 => __('Close'),
-            'size'                  => '',
-            'type'                  => self::TYPE_CENTER,
-            'key'                   => $key,
-            'title'                 => $key,
-            'turbolinks'            => true,
-            'commandBar'            => [],
-            'withoutApplyButton'    => false,
-            'withoutCloseButton'    => false,
+            'apply'              => __('Apply'),
+            'close'              => __('Close'),
+            'size'               => '',
+            'type'               => self::TYPE_CENTER,
+            'key'                => $key,
+            'title'              => $key,
+            'turbolinks'         => true,
+            'commandBar'         => [],
+            'withoutApplyButton' => false,
+            'withoutCloseButton' => false,
+            'open'               => false,
+            'method'             => null,
+            'staticBackdrop'     => false,
         ];
 
         $this->layouts = $layouts;
@@ -182,6 +185,42 @@ class Modal extends Layout
     public function rawClick(bool $status = false): self
     {
         $this->variables['turbolinks'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * @param bool $status
+     *
+     * @return $this
+     */
+    public function open(bool $status = true): self
+    {
+        $this->variables['open'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * @param string $method
+     *
+     * @return $this
+     */
+    public function method(string $method): self
+    {
+        $this->variables['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * @param bool $status
+     *
+     * @return $this
+     */
+    public function staticBackdrop(bool $status = true): self
+    {
+        $this->variables['staticBackdrop'] = $status;
 
         return $this;
     }

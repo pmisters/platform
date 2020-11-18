@@ -4,6 +4,184 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 9.9.0 - 2020-11-13
+
+### Added
+- Method to clear the permission check cache [#1354](https://github.com/orchidsoftware/platform/pull/1354)
+- Added third status for checkbox [#1360](https://github.com/orchidsoftware/platform/pull/1360)
+- Added use of the third status to display available permissions [#1360](https://github.com/orchidsoftware/platform/pull/1360)
+- Added `datalist` for Input field [#1362](https://github.com/orchidsoftware/platform/pull/1362)
+
+### Changed
+- Update Faker [#1353](https://github.com/orchidsoftware/platform/pull/1353)
+
+### Fixed
+- Added missing keys translation [#1355](https://github.com/orchidsoftware/platform/pull/1355), [#1356](https://github.com/orchidsoftware/platform/pull/1356), [#1358](https://github.com/orchidsoftware/platform/pull/1358), 
+- Frozen version of Frappe charts
+
+## 9.8.2 - 2020-11-10
+
+### Fixed
+- Generate TD CSS width value [#1348](https://github.com/orchidsoftware/platform/pull/1348)
+- Dropzone.js timeout option not set. [#1349](https://github.com/orchidsoftware/platform/issues/1349), [#1350](https://github.com/orchidsoftware/platform/pull/1350)
+
+## 9.8.1 - 2020-11-09
+
+### Fixed
+- Rendering of attribute style in td view [#1347](https://github.com/orchidsoftware/platform/pull/1347)
+- Added maximum width and height for image fields
+
+## 9.8.0 - 2020-11-07
+
+### Added
+- Added `popover` method for TD [#1339](https://github.com/orchidsoftware/platform/issues/1339)
+
+### Changed
+- Rename breadcrumbs `Main` to `Home`
+
+## 9.7.4 - 2020-11-04
+
+### Fixed
+- Corrected translation
+
+## 9.7.3 - 2020-11-03
+
+### Fixed
+- Corrected translation of 404 page
+
+## 9.7.2 - 2020-11-03
+
+### Fixed
+- Duplicate title for permissions
+- Do not call the icon component with an empty parameter [#1331](https://github.com/orchidsoftware/platform/issues/1331)
+
+## 9.7.1 - 2020-11-02
+
+### Fixed
+- Display of modal windows after unsuccessful validation
+
+## 9.7.0 - 2020-10-24
+
+### Added
+- Automatically translate button names
+
+## 9.6.0 - 2020-10-24
+
+### Added
+- Bootstrap table-bordered to the table layout
+
+## 9.5.4 - 2020-10-23
+
+### Fixed
+- Render `DateRange` field with a value
+
+## 9.5.3 - 2020-10-22
+
+### Fixed
+- Striped style for tables
+
+## 9.5.2 - 2020-10-22
+
+### Fixed
+- Empty scope in Relation field
+
+## 9.5.1 - 2020-10-21
+
+### Fixed
+- Displaying html value in Quill field
+
+## 9.5.0 - 2020-10-21
+
+### Added
+- Relation scope parameters [#1085](https://github.com/orchidsoftware/platform/pull/1085)
+- Option for creating admin command. Changing only the permissions column [#1319](https://github.com/orchidsoftware/platform/pull/1319)
+
+### Changed
+- Automatic array wrapping when using modal
+
+### Fixed
+- Scaling on iOS
+- Btn class not working on Link [#1291](https://github.com/orchidsoftware/platform/pull/1291) [#1276](https://github.com/orchidsoftware/platform/issues/1276)
+- Passing null to postgresql database during validation
+- Do not escaped the value of a geographic map [#1318](https://github.com/orchidsoftware/platform/issues/1318)
+- Escaped textarea value
+- Improved login page padding on mobile devices
+- Display of indents for the icon if there is no text
+- Show active element menu with get parameters
+
+## 9.4.4 - 2020-10-19
+
+### Fixed
+- Escape inline attributes [#1313](https://github.com/orchidsoftware/platform/pull/1313)
+
+## 9.4.3 - 2020-10-17
+
+### Changed
+- Updated dependencies
+
+### Fixed
+- Fixed filters overlay for table [#1145](https://github.com/orchidsoftware/platform/issues/1145)
+- Fixed `ob_*` behavior when using the Blade in PHPUnit tests
+- Removed optional tags
+- Removed dash when a description is empty
+- Display of pagination for long horizontal tables.
+
+## 9.4.2 - 2020-10-13
+
+### Fixed
+- Allow passing `null` in Menu permission
+
+## 9.4.1 - 2020-10-11
+
+### Fixed
+- Quotes break the Quill editor [#1292](https://github.com/orchidsoftware/platform/issues/1292)
+- Corrected Users listing heading label. [#1289](https://github.com/orchidsoftware/platform/pull/1289), [#1273](https://github.com/orchidsoftware/platform/issues/1273)
+
+## 9.4.0 - 2020-10-08
+
+### Added
+- Aligns methods for `Group` field
+- Clear method for `Field`
+
+### Changed
+- Betterment UI #1227
+
+### Fixed
+- Not display filters for simple pagination
+- Show empty total row
+- Not load files translation
+
+### Deprecated
+- Methods right/block  for Action
+
+## 9.3.0 - 2020-10-07
+
+### Added
+- Method to automatically open a modal window on page load
+- Method for disable backdrop modals
+
+### Changed
+- Revert change 9.2.0
+
+## 9.2.0 - 2020-10-07
+
+### Added
+- Method to automatically open a modal window on page load
+
+## 9.1.1 - 2020-10-06
+
+### Changed
+- Removed white wrapper for tabs elements
+
+## 9.1.0 - 2020-10-05
+
+### Added
+- Short `selection` layout
+
+### Fixed
+- When generating links to resources, the settings `app.mix_url` and` app.asset_url` must be obeyed [#1267](https://github.com/orchidsoftware/platform/issues/1267)
+- Change the default port for the Dusk test
+
 ## 9.0.3 - 2020-10-02
 
 ### Fixed

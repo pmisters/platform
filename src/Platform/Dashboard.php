@@ -17,7 +17,7 @@ class Dashboard
     /**
      * ORCHID Version.
      */
-    public const VERSION = '9.0.3';
+    public const VERSION = '9.9.0';
 
     /**
      * The Dashboard configuration options.
@@ -281,6 +281,20 @@ class Dashboard
 
             return $group;
         });
+    }
+
+    /**
+     * Get all registered permissions with the enabled state.
+     *
+     * @return Collection
+     */
+    public function getAllowAllPermission(): Collection
+    {
+        return $this->getPermission()
+            ->collapse()
+            ->reduce(static function (Collection $permissions, array $item) {
+                return $permissions->put($item['slug'], true);
+            }, collect());
     }
 
     /**

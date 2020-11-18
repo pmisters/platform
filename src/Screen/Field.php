@@ -245,11 +245,13 @@ class Field implements Fieldable
     {
         $allow = array_merge($this->universalAttributes, $this->inlineAttributes);
 
-        $attribute = new ComponentAttributeBag($this->getAttributes());
+        $attributes = collect($this->getAttributes())
+            ->filter(function ($value, $attribute) use ($allow) {
+                return Str::is($allow, $attribute);
+            })->toArray();
 
-        return $attribute->filter(function ($value, $attribute) use ($allow) {
-            return Str::is($allow, $attribute);
-        });
+        return (new ComponentAttributeBag())
+            ->merge($attributes);
     }
 
     /**
@@ -405,6 +407,18 @@ class Field implements Fieldable
     public function vertical(): self
     {
         $this->typeForm = 'platform::partials.fields.vertical';
+
+        return $this;
+    }
+
+    /**
+     * Use clear layout for the field.
+     *
+     * @return static
+     */
+    public function clear(): self
+    {
+        $this->typeForm = 'platform::partials.fields.clear';
 
         return $this;
     }
