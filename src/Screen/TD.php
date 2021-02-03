@@ -6,9 +6,11 @@ namespace Orchid\Screen;
 
 use Closure;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\View\View;
+use Orchid\Support\Blade;
 
 class TD
 {
@@ -111,12 +113,25 @@ class TD
     }
 
     /**
+     * @deprecated usage `make` method
+     *
      * @param string      $name
      * @param string|null $title
      *
      * @return TD
      */
     public static function set(string $name = '', string $title = null): self
+    {
+        return static::make($name, $title);
+    }
+
+    /**
+     * @param string      $name
+     * @param string|null $title
+     *
+     * @return static
+     */
+    public static function make(string $name = '', string $title = null): self
     {
         $td = new static($name);
         $td->column = $name;
@@ -162,7 +177,7 @@ class TD
     }
 
     /**
-     * @param Repository|AsSource $source
+     * @param Repository|Model $source
      *
      * @return mixed
      */
@@ -243,7 +258,7 @@ class TD
     /**
      * Builds content for the column.
      *
-     * @param Repository|AsSource $repository
+     * @param Repository|Model $repository
      *
      * @return Factory|View
      */
@@ -344,5 +359,25 @@ class TD
         return collect($columns)->filter(function ($column) {
             return $column->isAllowUserHidden();
         })->isNotEmpty();
+    }
+
+    /**
+     * @param string      $component
+     * @param string|null $name
+     * @param array       $params
+     *
+     * @return $this
+     */
+    public function component(string $component, string $name = null, array $params = []): self
+    {
+        return $this->render(function ($value) use ($component, $name, $params) {
+            if ($name === null) {
+                return Blade::renderComponent($component, $value);
+            }
+
+            $params[$name] = $value;
+
+            return Blade::renderComponent($component, $params);
+        });
     }
 }

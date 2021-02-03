@@ -24,7 +24,7 @@ $grey:          #495057;
 
 $grey-light : mix($grey, #ffffff, 10%);
 
-$body-bg : #eaf1f7;//lighten($light, 1%);
+$body-bg : #edeef0;//lighten($light, 1%);
 $text-color : #58666e;
 $text-muted : lighten($text-color, 25%);
 
@@ -74,9 +74,10 @@ $list-group-active-color : $cyan;
 
 $table-border-color : lighten($border-color, 2%);
 $table-striped-color : lighten($light, 4.5%);
+$table-hover-bg: rgba($dark, .045) !default;
 
 $app-aside-min-width : 20em;
-$app-aside-width : 350px;
+$app-aside-width : 280px;
 $aside-wrap-main-width: 0px;
 $app-aside-nav-height : 40px; //2,857rem;
 $app-aside-folded-width : 60px;

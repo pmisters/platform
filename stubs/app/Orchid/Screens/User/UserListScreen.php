@@ -9,6 +9,7 @@ use App\Orchid\Layouts\User\UserFiltersLayout;
 use App\Orchid\Layouts\User\UserListLayout;
 use Illuminate\Http\Request;
 use Orchid\Platform\Models\User;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -57,13 +58,17 @@ class UserListScreen extends Screen
      */
     public function commandBar(): array
     {
-        return [];
+        return [
+            Link::make(__('Add'))
+                ->icon('plus')
+                ->route('platform.systems.users.create'),
+        ];
     }
 
     /**
      * Views.
      *
-     * @return \Orchid\Screen\Layout[]
+     * @return string[]|\Orchid\Screen\Layout[]
      */
     public function layout(): array
     {
@@ -91,8 +96,6 @@ class UserListScreen extends Screen
     /**
      * @param User    $user
      * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function saveUser(User $user, Request $request)
     {
@@ -101,7 +104,6 @@ class UserListScreen extends Screen
         ]);
 
         $user->fill($request->input('user'))
-            ->replaceRoles($request->input('user.roles'))
             ->save();
 
         Toast::info(__('User was saved.'));

@@ -6,7 +6,7 @@
         <div class="d-md-flex align-items-start flex-column d-sm-block h-full">
 
             <div class="d-sm-flex d-md-block p-3 mt-md-4 w-100 v-center">
-                <a href="#" class="header-toggler d-md-none mr-auto order-first"
+                <a href="#" class="header-toggler d-md-none mr-auto order-first d-flex align-items-center"
                    data-toggle="collapse"
                    data-target="#headerMenuCollapse">
                     <x-orchid-icon path="menu" class="icon-menu"/>
@@ -33,12 +33,12 @@
 
             <div class="h-100 w-100 position-relative to-top cursor d-none d-md-block mt-md-5 divider"
                  data-action="click->layouts--html-load#goToTop"
-                 title="{{ __('Go to top') }}">
+                 title="{{ __('Scroll to top') }}">
                 <div class="bottom-left w-100 mb-2 pl-3">
                     <small>
                         <x-orchid-icon path="arrow-up" class="mr-2"/>
 
-                        {{ __('Go to top') }}
+                        {{ __('Scroll to top') }}
                     </small>
                 </div>
             </div>

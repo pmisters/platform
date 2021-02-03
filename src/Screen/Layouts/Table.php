@@ -65,7 +65,9 @@ abstract class Table extends Layout
             'subNotFound'  => $this->subNotFound(),
             'striped'      => $this->striped(),
             'bordered'     => $this->bordered(),
+            'hoverable'    => $this->hoverable(),
             'slug'         => $this->getSlug(),
+            'onEachSide'   => $this->onEachSide(),
         ]);
     }
 
@@ -111,6 +113,26 @@ abstract class Table extends Layout
     protected function bordered(): bool
     {
         return false;
+    }
+
+    /**
+     * Enable a hover state on table rows.
+     *
+     * @return bool
+     */
+    protected function hoverable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * The number of links to display on each side of current page link.
+     *
+     * @return int
+     */
+    protected function onEachSide(): int
+    {
+        return 3;
     }
 
     /**

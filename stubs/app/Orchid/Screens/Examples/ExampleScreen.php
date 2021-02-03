@@ -82,8 +82,8 @@ class ExampleScreen extends Screen
                 ['keyValue' => number_format(6851, 0), 'keyDiff' => 10.08],
                 ['keyValue' => number_format(24668, 0), 'keyDiff' => -30.76],
                 ['keyValue' => number_format(65661, 2), 'keyDiff' => 3.84],
-                ['keyValue' => number_format(10000, 0), 'keyDiff' => -169.54],
-                ['keyValue' => number_format(1454887.12, 2), 'keyDiff' => 0.2],
+                ['keyValue' => number_format(10000, 0), 'keyDiff' => 0],
+                ['keyValue' => number_format(1454887.12, 2)],
             ],
         ];
     }
@@ -130,7 +130,7 @@ class ExampleScreen extends Screen
     /**
      * Views.
      *
-     * @return \Orchid\Screen\Layout[]
+     * @return string[]|\Orchid\Screen\Layout[]
      */
     public function layout(): array
     {
@@ -139,7 +139,7 @@ class ExampleScreen extends Screen
             ChartBarExample::class,
 
             Layout::table('table', [
-                TD::set('id', 'ID')
+                TD::make('id', 'ID')
                     ->width('150')
                     ->render(function (Repository $model) {
                         // Please use view('path')
@@ -149,18 +149,18 @@ class ExampleScreen extends Screen
                             <span class='small text-muted mt-1 mb-0'># {$model->get('id')}</span>";
                     }),
 
-                TD::set('name', 'Name')
+                TD::make('name', 'Name')
                     ->width('450')
                     ->render(function (Repository $model) {
                         return Str::limit($model->get('name'), 200);
                     }),
 
-                TD::set('price', 'Price')
+                TD::make('price', 'Price')
                     ->render(function (Repository $model) {
                         return '$ '.number_format($model->get('price'), 2);
                     }),
 
-                TD::set('created_at', 'Created'),
+                TD::make('created_at', 'Created'),
             ]),
 
             Layout::modal('exampleModal', Layout::rows([

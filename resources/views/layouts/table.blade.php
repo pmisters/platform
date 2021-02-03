@@ -4,7 +4,11 @@
 >
 
     <div class="table-responsive">
-        <table class="table @if($striped) table-striped @endif @if($bordered) table-bordered @endif">
+        <table class="table
+            @if($striped) table-striped @endif
+            @if($bordered) table-bordered @endif
+            @if($hoverable) table-hover @endif
+        ">
             <thead>
                 <tr>
                     @foreach($columns as $column)
@@ -52,7 +56,8 @@
     @includeWhen($rows instanceof \Illuminate\Contracts\Pagination\Paginator && $rows->isNotEmpty(),
         'platform::layouts.pagination',[
             'paginator' => $rows,
-            'columns' => $columns
+            'columns' => $columns,
+            'onEachSide' => $onEachSide,
         ])
 </div>
 

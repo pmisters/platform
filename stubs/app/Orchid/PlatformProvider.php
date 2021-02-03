@@ -2,11 +2,11 @@
 
 namespace App\Orchid;
 
-use Laravel\Scout\Searchable;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
+use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
@@ -37,7 +37,7 @@ class PlatformProvider extends OrchidServiceProvider
             ItemMenu::label('Dropdown menu')
                 ->slug('example-menu')
                 ->icon('code')
-                ->childs(),
+                ->withChildren(),
 
             ItemMenu::label('Sub element item 1')
                 ->place('example-menu')
@@ -77,6 +77,13 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Docs')
                 ->icon('docs')
                 ->url('https://orchid.software/en/docs'),
+
+            ItemMenu::label('Changelog')
+                ->icon('shuffle')
+                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
+                ->badge(function () {
+                    return Dashboard::version();
+                }, Color::DARK()),
         ];
     }
 
@@ -136,7 +143,7 @@ class PlatformProvider extends OrchidServiceProvider
     }
 
     /**
-     * @return Searchable|string[]
+     * @return string[]
      */
     public function registerSearchModels(): array
     {
